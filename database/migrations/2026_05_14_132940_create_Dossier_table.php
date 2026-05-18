@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('dossiers', function (Blueprint $table) {
             $table->id();
-            $table->string('antecedent', 255);
+            $table->string('antecedents', 255);
             $table->string('traitement_en_cours', 255);
             $table->foreignId('patient_id')->constrained()->onDelete('cascade');
             $table->timestamps();

@@ -13,7 +13,7 @@ class PatientController extends Controller
     public function index()
 
     {   $patients = Patient::all();
-        return view('patient.index', compact('patient'));
+        return view('patient.index', compact('patients'));
     }
 
     /**
@@ -75,7 +75,7 @@ class PatientController extends Controller
 
         return redirect()->route('patient.index')->with('success', 'Patient modifié avec succés!');
         }catch(\Throwable $th){
-            return redirect()->route('patient.edit')->with('error', 'Erreur lors de la modification du patient!');
+            return redirect()->route('patient.edit',['id'=>$id])->with('error', 'Erreur lors de la modification du patient!');
         }
         
     }

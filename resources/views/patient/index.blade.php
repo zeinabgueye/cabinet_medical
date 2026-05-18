@@ -21,12 +21,12 @@
             <tbody>
                 @forelse($patients as $patient)
                 <tr>
-                    <td class="fw-semibold">{{ $patient->Nom }} {{ $patient->Prenom }}</td>
-                    <td>{{ $patient->Telephone }}</td>
+                    <td class="fw-semibold">{{ $patient->nom }} {{ $patient->prenom }}</td>
+                    <td>{{ $patient->telephone }}</td>
                     <td>{{ $patient->adresse }}</td>
                     <td>
-                        <span class="badge bg-{{ $patient->Etat === 'actif' ? 'success' : 'secondary' }}">
-                            {{ $patient->Etat }}
+                        <span class="badge bg-{{ $patient->etat === 'actif' ? 'success' : 'secondary' }}">
+                            {{ $patient->etat }}
                         </span>
                     </td>
                     <td class="text-end">

@@ -12,14 +12,14 @@ class RendezvousController extends Controller
      */
     public function index()
     {
-        $redezvous = Rendezvous::where('Medecin_id', auth()->user()->medecin->id)->get();
+        $rendezvous = Rendezvous::where('medecin_id', auth()->user()->medecin->id)->get();
         return view('rendezvous.index', compact('rendezvous'));
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(string $id)
     {
         return view('rendezvous.create', compact('id'));
     }
@@ -32,15 +32,15 @@ class RendezvousController extends Controller
         try{
             $request->validate([
                 'date_heure'=>'required|date',
-                'motif'=>'required|motif|max:100'
+                'motif'=>'required|string|max:255'
             ]);
 
             Rendezvous::create([
                 'date_heure'=>$request->date_heure,
                 'motif'=>$request->motif,
                 'statut'=>'confirme',
-                'Patient_id'=>$request->$id,
-                'Medecin_id'=>auth()->user()->medecin->id
+                'patient_id'=>$id,
+                'medecin_id'=>auth()->user()->medecin->id
 
             ]);
             return redirect()->route('rendezvous.index')->with('success', 'Rrendez-vous créer avec succés!');
@@ -78,7 +78,7 @@ class RendezvousController extends Controller
             $request->validate([
                 'date_heure'=>'required|date',
                 'motif'=>'required|string|max:255',
-                'statut'=>'required|in:en_attente,confirmé,annulé'
+                'statut'=>'required|in:en_attente,confirme,annule'
             ]);
 
             $rendezvous->update([
@@ -109,7 +109,7 @@ class RendezvousController extends Controller
     }
 
     public function patientIndex(){
-        $rendezvous = Rendezvous::where('Patient_id', auth()->user()->patient->id)->get();
+        $rendezvous = Rendezvous::where('patient_id', auth()->user()->patient->id)->get();
         return view('rendezvous.patient', compact('rendezvous'));
     }
 
@@ -121,16 +121,16 @@ class RendezvousController extends Controller
         try{
             $request->validate([
                 'date_heure'=>'required|date',
-                'motif'=>'required|string|max:100',
-                'Medecin_id'=>'required|exists:medecins,id'
+                'motif'=>'required|string|max:255',
+                'medecin_id'=>'required|exists:medecins,id'
             ]);
 
             Rendezvous::create([
                 'date_heure'=>$request->date_heure,
                 'motif'=>$request->motif,
                 'statut'=>'en_attente',
-                'Patient_id'=>auth()->user()->patient->id,
-                'Medecin_id'=>$request->Medecin_id
+                'patient_id'=>auth()->user()->patient->id,
+                'medecin_id'=>$request->medecin_id
 
             ]);
             return redirect()->route('patient.rendezvous')->with('success', 'Demande envoyée avec succées!');
@@ -141,8 +141,8 @@ class RendezvousController extends Controller
 
     public function patientDestroy(string $id){
         try{
-            $rendezvous = Rendezvous::findOrFail();
-            abort_if($rendezvous->Patient_id != auth()->user()->patient->id, 403);
+            $rendezvous = Rendezvous::findOrFail($id);
+            abort_if($rendezvous->patient_id != auth()->user()->patient->id, 403);
 
             $rendezvous->delete();
             return redirect()->route('patient.rendezvous')->with('success', 'Rendez-vous annulé!');

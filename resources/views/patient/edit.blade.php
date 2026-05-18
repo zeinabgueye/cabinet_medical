@@ -6,7 +6,7 @@
     <div class="col-md-8">
         <div class="card">
             <div class="card-header bg-primary text-white">
-                <i class="bi bi-pencil me-2"></i> Modifier — {{ $patient->Nom }} {{ $patient->Prenom }}
+                <i class="bi bi-pencil me-2"></i> Modifier — {{ $patient->nom }} {{ $patient->prenom }}
             </div>
             <div class="card-body p-4">
                 <form action="{{ route('patient.update', $patient->id) }}" method="POST">
@@ -17,26 +17,26 @@
                         <div class="col-md-6">
                             <label class="form-label">Nom</label>
                             <input type="text" name="nom" class="form-control @error('nom') is-invalid @enderror"
-                                   value="{{ old('nom', $patient->Nom) }}">
+                                   value="{{ old('nom', $patient->nom) }}">
                             @error('nom') <div class="invalid-feedback">{{ $message }}</div> @enderror
                         </div>
                         <div class="col-md-6">
                             <label class="form-label">Prénom</label>
                             <input type="text" name="prenom" class="form-control @error('prenom') is-invalid @enderror"
-                                   value="{{ old('prenom', $patient->Prenom) }}">
+                                   value="{{ old('prenom', $patient->prenom) }}">
                             @error('prenom') <div class="invalid-feedback">{{ $message }}</div> @enderror
                         </div>
                         <div class="col-md-6">
                             <label class="form-label">Téléphone</label>
                             <input type="text" name="telephone" class="form-control @error('telephone') is-invalid @enderror"
-                                   value="{{ old('telephone', $patient->Telephone) }}">
+                                   value="{{ old('telephone', $patient->telephone) }}">
                             @error('telephone') <div class="invalid-feedback">{{ $message }}</div> @enderror
                         </div>
                         <div class="col-md-6">
                             <label class="form-label">État</label>
                             <select name="etat" class="form-select @error('etat') is-invalid @enderror">
-                                <option value="actif"   {{ old('etat', $patient->Etat) === 'actif'   ? 'selected' : '' }}>Actif</option>
-                                <option value="inactif" {{ old('etat', $patient->Etat) === 'inactif' ? 'selected' : '' }}>Inactif</option>
+                                <option value="actif"   {{ old('etat', $patient->etat) === 'actif'   ? 'selected' : '' }}>Actif</option>
+                                <option value="inactif" {{ old('etat', $patient->etat) === 'inactif' ? 'selected' : '' }}>Inactif</option>
                             </select>
                             @error('etat') <div class="invalid-feedback">{{ $message }}</div> @enderror
                         </div>

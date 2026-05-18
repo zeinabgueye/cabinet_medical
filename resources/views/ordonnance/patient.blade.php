@@ -11,7 +11,7 @@
     <div class="card-header d-flex justify-content-between align-items-center">
         <span class="fw-semibold">
             <i class="bi bi-file-earmark-medical me-2 text-primary"></i>
-            Dr. {{ $ordonnance->medecin->Nom }} {{ $ordonnance->medecin->Prenom }}
+            Dr. {{ $ordonnance->medecin->nom }} {{ $ordonnance->medecin->prenom }}
         </span>
         <span class="text-muted small">{{ \Carbon\Carbon::parse($ordonnance->date)->format('d/m/Y') }}</span>
     </div>

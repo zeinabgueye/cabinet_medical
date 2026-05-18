@@ -14,32 +14,38 @@
 
                     <div class="mb-3">
                         <label class="form-label">Médecin</label>
-                        <select name="Medecin_id" class="form-select @error('Medecin_id') is-invalid @enderror">
+                        <select name="medecin_id" class="form-select @error('medecin_id') is-invalid @enderror" required>
                             <option value="">-- Choisir un médecin --</option>
                             @foreach(\App\Models\Medecin::all() as $medecin)
                             <option value="{{ $medecin->id }}"
-                                {{ old('Medecin_id') == $medecin->id ? 'selected' : '' }}>
-                                Dr. {{ $medecin->Nom }} {{ $medecin->Prenom }} — {{ $medecin->Specialite }}
+                                {{ old('medecin_id') == $medecin->id ? 'selected' : '' }}>
+                                Dr. {{ $medecin->nom }} {{ $medecin->prenom }} — {{ $medecin->specialite }}
                             </option>
                             @endforeach
                         </select>
-                        @error('Medecin_id') <div class="invalid-feedback">{{ $message }}</div> @enderror
+                        @error('medecin_id') 
+                            <div class="invalid-feedback">{{ $message }}</div> 
+                        @enderror
                     </div>
 
                     <div class="mb-3">
                         <label class="form-label">Date & Heure souhaitée</label>
                         <input type="datetime-local" name="date_heure"
                                class="form-control @error('date_heure') is-invalid @enderror"
-                               value="{{ old('date_heure') }}">
-                        @error('date_heure') <div class="invalid-feedback">{{ $message }}</div> @enderror
+                               value="{{ old('date_heure') }}" required>
+                        @error('date_heure') 
+                            <div class="invalid-feedback">{{ $message }}</div> 
+                        @enderror
                     </div>
 
                     <div class="mb-3">
                         <label class="form-label">Motif de la consultation</label>
                         <textarea name="motif" rows="3"
                                   class="form-control @error('motif') is-invalid @enderror"
-                                  placeholder="Décrivez brièvement le motif...">{{ old('motif') }}</textarea>
-                        @error('motif') <div class="invalid-feedback">{{ $message }}</div> @enderror
+                                  placeholder="Décrivez brièvement le motif..." required>{{ old('motif') }}</textarea>
+                        @error('motif') 
+                            <div class="invalid-feedback">{{ $message }}</div> 
+                        @enderror
                     </div>
 
                     <div class="alert alert-info small">

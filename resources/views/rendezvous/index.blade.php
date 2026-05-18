@@ -21,13 +21,13 @@
             <tbody>
                 @forelse($rendezvous as $rdv)
                 <tr>
-                    <td class="fw-semibold">{{ $rdv->patient->Nom }} {{ $rdv->patient->Prenom }}</td>
+                    <td class="fw-semibold">
+                        {{ $rdv->patient->nom ?? 'N/A' }} {{ $rdv->patient->prenom ?? '' }}
+                    </td>
                     <td>{{ \Carbon\Carbon::parse($rdv->date_heure)->format('d/m/Y H:i') }}</td>
                     <td>{{ $rdv->motif }}</td>
                     <td>
-                        <span class="badge bg-{{
-                            $rdv->statut === 'confirme'   ? 'success' :
-                            ($rdv->statut === 'annule'    ? 'danger'  : 'warning') }}">
+                        <span class="badge bg-{{ $rdv->statut === 'confirme' ? 'success' : ($rdv->statut === 'annule' ? 'danger' : 'warning') }}">
                             {{ $rdv->statut }}
                         </span>
                     </td>
@@ -50,7 +50,10 @@
                 </tr>
                 @empty
                 <tr>
-                    <td colspan="5" class="text-center text-muted py-4">Aucun rendez-vous.</td>
+                    <td colspan="5" class="text-center text-muted py-4">
+                        <i class="bi bi-calendar-x fs-1 d-block mb-2 opacity-25"></i>
+                        Aucun rendez-vous trouvé.
+                    </td>
                 </tr>
                 @endforelse
             </tbody>

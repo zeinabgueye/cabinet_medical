@@ -13,7 +13,7 @@ class OrdonnanceController extends Controller
     public function index()
     {
         $ordonnances = Ordonnance::all();
-        return view('ordonnance.index', compact('ordonnance'));
+        return view('ordonnance.index', compact('ordonnances'));
     }
 
     /**
@@ -32,18 +32,17 @@ class OrdonnanceController extends Controller
         try{
             $request->validate([
                 'date'=>'required|date',
-                'médicament'=>'required|string|max:50',
+                'medicament'=>'required|string|max:50',
                 'posologie'=>'required|string|max:250',
-                'Medecin_id'=>'required|exists:medecin,id',
-                'Patient_id'=>'required|exists:patient, id'
+                'patient_id'=>'required|exists:patients,id'
             ]);
 
             Ordonnance::create([
                 'date'=>$request->date,
-                'médicament'=>$request->médicament,
+                'medicament'=>$request->medicament,
                 'posologie'=>$request->posologie,
-                'Patient_id'=>$request->Patient_id,
-                'Medecin_id'=>auth()->user()->medecin->id
+                'patient_id'=>$request->patient_id,
+                'medecin_id'=>auth()->user()->medecin->id
             ]);
             return redirect()->route('ordonnance.index')->with('success', 'Ordonnance créer avec succés!');
         }catch(\Throwable $th){
@@ -86,7 +85,7 @@ class OrdonnanceController extends Controller
 
     public function patientIndex()
     {
-        $ordonnance = Ordonnance::where('Patient_id', auth()->user()->patient->id)->get();
+        $ordonnances = Ordonnance::where('Patient_id', auth()->user()->patient->id)->get();
         return view('ordonnance.patient', compact('ordonnances'));
     }
 }

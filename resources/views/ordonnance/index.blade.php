@@ -25,7 +25,7 @@
                 @forelse($ordonnances as $ordonnance)
                 <tr>
                     <td>{{ \Carbon\Carbon::parse($ordonnance->date)->format('d/m/Y') }}</td>
-                    <td class="fw-semibold">{{ $ordonnance->patient->Nom }} {{ $ordonnance->patient->Prenom }}</td>
+                    <td class="fw-semibold">{{ $ordonnance->patient->nom }} {{ $ordonnance->patient->prenom }}</td>
                     <td>{{ \Str::limit($ordonnance->medicament, 40) }}</td>
                     <td>{{ \Str::limit($ordonnance->posologie, 40) }}</td>
                     <td class="text-end">

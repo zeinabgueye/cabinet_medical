@@ -20,7 +20,7 @@
             <tbody>
                 @forelse($dossiers as $dossier)
                 <tr>
-                    <td class="fw-semibold">{{ $dossier->patient->Nom }} {{ $dossier->patient->Prenom }}</td>
+                    <td class="fw-semibold">{{ $dossier->patient->nom }} {{ $dossier->patient->prenom }}</td>
                     <td>{{ \Str::limit($dossier->antecedents, 255) }}</td>
                     <td>{{ \Str::limit($dossier->traitement_en_cours, 255) }}</td>
                     <td class="text-end">

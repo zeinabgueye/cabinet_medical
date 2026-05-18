@@ -12,7 +12,7 @@ class MedecinController extends Controller
      */
     public function index()
     {
-        $medecin = Medecin::all();
+        $medecin = auth()->user()->medecin;
         return view('medecin.index', compact('medecin'));
     }
 
@@ -64,7 +64,7 @@ class MedecinController extends Controller
         $request->validate([
             'nom'=>'required|string|max:50',
             'prenom'=>'required|string|max:50',
-            'email'=>'required|string|max:30|unique:medecin,email,'.$id.',id_med',
+            'email'=>'required|string|max:30|unique:medecins,email,'.$id.',id_med',
             'specialite'=>'required|string|max:50',
             'telephone'=>'required|string|max:30'
 

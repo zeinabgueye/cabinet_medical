@@ -8,7 +8,7 @@
     <div class="col-12">
         <div class="card bg-primary text-white">
             <div class="card-body">
-                <h5 class="mb-1">Bonjour, {{ $patient->Nom }} {{ $patient->Prenom }} </h5>
+                <h5 class="mb-1">Bonjour, {{ $patient->nom }} {{ $patient->prenom }} </h5>
                 <p class="mb-0 small opacity-75">Bienvenue dans votre espace patient.</p>
             </div>
         </div>

@@ -8,12 +8,12 @@
     <div class="col-md-5">
         <div class="card h-100">
             <div class="card-header bg-primary text-white">
-                <i class="bi bi-person me-2"></i> {{ $patient->Nom }} {{ $patient->Prenom }}
+                <i class="bi bi-person me-2"></i> {{ $patient->nom }} {{ $patient->prenom }}
             </div>
             <div class="card-body">
                 <div class="row mb-3">
                     <div class="col-5 text-muted">Téléphone</div>
-                    <div class="col-7">{{ $patient->Telephone }}</div>
+                    <div class="col-7">{{ $patient->telephone }}</div>
                 </div>
                 <div class="row mb-3">
                     <div class="col-5 text-muted">Adresse</div>
@@ -22,8 +22,8 @@
                 <div class="row mb-3">
                     <div class="col-5 text-muted">État</div>
                     <div class="col-7">
-                        <span class="badge bg-{{ $patient->Etat === 'actif' ? 'success' : 'secondary' }}">
-                            {{ $patient->Etat }}
+                        <span class="badge bg-{{ $patient->etat === 'actif' ? 'success' : 'secondary' }}">
+                            {{ $patient->etat }}
                         </span>
                     </div>
                 </div>

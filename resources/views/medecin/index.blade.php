@@ -11,23 +11,23 @@
             <div class="card-body p-4">
                 <div class="row mb-3">
                     <div class="col-sm-4 text-muted">Nom</div>
-                    <div class="col-sm-8 fw-semibold">{{ $medecin->Nom }}</div>
+                    <div class="col-sm-8 fw-semibold">{{ $medecin->nom }}</div>
                 </div>
                 <div class="row mb-3">
                     <div class="col-sm-4 text-muted">Prénom</div>
-                    <div class="col-sm-8 fw-semibold">{{ $medecin->Prenom }}</div>
+                    <div class="col-sm-8 fw-semibold">{{ $medecin->prenom }}</div>
                 </div>
                 <div class="row mb-3">
                     <div class="col-sm-4 text-muted">Spécialité</div>
-                    <div class="col-sm-8">{{ $medecin->Specialite }}</div>
+                    <div class="col-sm-8">{{ $medecin->specialite }}</div>
                 </div>
                 <div class="row mb-3">
                     <div class="col-sm-4 text-muted">Email</div>
-                    <div class="col-sm-8">{{ $medecin->Email }}</div>
+                    <div class="col-sm-8">{{ $medecin->email }}</div>
                 </div>
                 <div class="row mb-3">
                     <div class="col-sm-4 text-muted">Téléphone</div>
-                    <div class="col-sm-8">{{ $medecin->Telephone }}</div>
+                    <div class="col-sm-8">{{ $medecin->telephone }}</div>
                 </div>
                 <div class="mt-4">
                     <a href="{{ route('medecin.edit', $medecin->id) }}" class="btn btn-primary me-2">

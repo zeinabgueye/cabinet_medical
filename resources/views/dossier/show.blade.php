@@ -8,7 +8,7 @@
             <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
                 <span><i class="bi bi-folder2-open me-2"></i> Dossier médical</span>
                 <span class="small opacity-75">
-                    {{ $dossier->patient->Nom }} {{ $dossier->patient->Prenom }}
+                    {{ $dossier->patient->nom }} {{ $dossier->patient->prenom }}
                 </span>
             </div>
             <div class="card-body p-4">

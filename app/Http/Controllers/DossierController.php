@@ -38,7 +38,7 @@ class DossierController extends Controller
             Dossier::create([
                 'antecedents'=>$request->antecedents,
                 'traitement_en_cours'=>$request->traitement_en_cours,
-                'Patient_id'=>$id
+                'patient_id'=>$id
             ]);
             return redirect()->route('dossier.index')->with('success', 'Dossier créer avec succes!');
         }catch(\Throwable $th){
@@ -98,10 +98,8 @@ class DossierController extends Controller
 
     public function patientShow()
     {
-        $dossier = Dossier::where('Patient_id', auth()->user()->patient->id)->first();
-        if(!$dossier){
-            return view('dossier.patient-empty')->with('info', 'Votre dossier médical n\'a pas encore été créé.');
-}
+        $dossier = Dossier::where('patient_id', auth()->user()->patient->id)->first();
+        
         return view('dossier.patient', compact('dossier'));
     }
 }

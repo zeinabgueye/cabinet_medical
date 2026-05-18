@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Model;
 class Medecin extends Model
 {
     use HasFactory;
+    protected $table = 'medecins'; 
 
 
     protected $fillable = [
@@ -41,7 +42,7 @@ class Medecin extends Model
 
     public function rendezvous()
     {
-        return $this->hasMany(Rendezvous::class);
+        return $this->hasMany(Rendezvous::class, 'medecin_id');
     }
 
     public function ordonnances()

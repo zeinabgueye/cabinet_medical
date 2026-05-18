@@ -76,7 +76,7 @@ Route::middleware(['auth', 'role:patient'])->group(function(){
 
     Route::post('mon/rendezvous/save', [RendezvousController::class, 'patientStore'])->name('patient.rendezvous.save');
 
-    Route::get('mon/rendezvous/delete/{id}/', [RendezvousController::class, 'patientDestroy'])->name('patient.rendezvous.delete');
+    Route::delete('mon/rendezvous/delete/{id}/', [RendezvousController::class, 'patientDestroy'])->name('patient.rendezvous.delete');
 });
 
 

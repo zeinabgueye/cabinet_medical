@@ -9,7 +9,7 @@
                 <span><i class="bi bi-calendar-check me-2"></i> Rendez-vous</span>
                 <span class="badge bg-{{
                     $rendezvous->statut === 'confirme' ? 'success' :
-                    ($rendezvous->statut === 'annule'  ? 'danger'  : 'warning') }}">
+                    ($rendezvous->statut === 'annule' ? 'danger' : 'warning') }}">
                     {{ $rendezvous->statut }}
                 </span>
             </div>
@@ -18,7 +18,7 @@
                     <div class="col-4 text-muted">Patient</div>
                     <div class="col-8 fw-semibold">
                         <a href="{{ route('patient.show', $rendezvous->patient->id) }}">
-                            {{ $rendezvous->patient->Nom }} {{ $rendezvous->patient->Prenom }}
+                            {{ $rendezvous->patient->nom }} {{ $rendezvous->patient->prenom }}
                         </a>
                     </div>
                 </div>

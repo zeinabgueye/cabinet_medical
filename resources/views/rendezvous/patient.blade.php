@@ -14,6 +14,7 @@
         <table class="table table-hover mb-0">
             <thead class="table-light">
                 <tr>
+                    <th>Médecin</th>
                     <th>Date & Heure</th>
                     <th>Motif</th>
                     <th>Statut</th>
@@ -23,12 +24,13 @@
             <tbody>
                 @forelse($rendezvous as $rdv)
                 <tr>
+                    <td class="fw-semibold">Dr. {{ $rdv->medecin->nom }} {{ $rdv->medecin->prenom }}</td>
                     <td>{{ \Carbon\Carbon::parse($rdv->date_heure)->format('d/m/Y H:i') }}</td>
                     <td>{{ $rdv->motif }}</td>
                     <td>
                         <span class="badge bg-{{
                             $rdv->statut === 'confirme' ? 'success' :
-                            ($rdv->statut === 'annule'  ? 'danger'  : 'warning') }}">
+                            ($rdv->statut === 'annule' ? 'danger' : 'warning') }}">
                             {{ $rdv->statut }}
                         </span>
                     </td>
@@ -49,7 +51,7 @@
                 </tr>
                 @empty
                 <tr>
-                    <td colspan="4" class="text-center text-muted py-4">Aucun rendez-vous.</td>
+                    <td colspan="5" class="text-center text-muted py-4">Aucun rendez-vous.</td>
                 </tr>
                 @endforelse
             </tbody>

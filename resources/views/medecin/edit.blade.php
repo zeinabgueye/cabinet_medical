@@ -16,35 +16,35 @@
                     <div class="mb-3">
                         <label class="form-label">Nom</label>
                         <input type="text" name="nom" class="form-control @error('nom') is-invalid @enderror"
-                               value="{{ old('nom', $medecin->Nom) }}">
+                               value="{{ old('nom', $medecin->nom) }}">
                         @error('nom') <div class="invalid-feedback">{{ $message }}</div> @enderror
                     </div>
 
                     <div class="mb-3">
                         <label class="form-label">Prénom</label>
                         <input type="text" name="prenom" class="form-control @error('prenom') is-invalid @enderror"
-                               value="{{ old('prenom', $medecin->Prenom) }}">
+                               value="{{ old('prenom', $medecin->prenom) }}">
                         @error('prenom') <div class="invalid-feedback">{{ $message }}</div> @enderror
                     </div>
 
                     <div class="mb-3">
                         <label class="form-label">Spécialité</label>
                         <input type="text" name="specialite" class="form-control @error('specialite') is-invalid @enderror"
-                               value="{{ old('specialite', $medecin->Specialite) }}">
+                               value="{{ old('specialite', $medecin->specialite) }}">
                         @error('specialite') <div class="invalid-feedback">{{ $message }}</div> @enderror
                     </div>
 
                     <div class="mb-3">
                         <label class="form-label">Email</label>
                         <input type="email" name="email" class="form-control @error('email') is-invalid @enderror"
-                               value="{{ old('email', $medecin->Email) }}">
+                               value="{{ old('email', $medecin->email) }}">
                         @error('email') <div class="invalid-feedback">{{ $message }}</div> @enderror
                     </div>
 
                     <div class="mb-3">
                         <label class="form-label">Téléphone</label>
                         <input type="text" name="telephone" class="form-control @error('telephone') is-invalid @enderror"
-                               value="{{ old('telephone', $medecin->Telephone) }}">
+                               value="{{ old('telephone', $medecin->telephone) }}">
                         @error('telephone') <div class="invalid-feedback">{{ $message }}</div> @enderror
                     </div>
 
