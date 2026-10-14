@@ -1,3 +1,4 @@
+use App\Models\Patient;
 @extends('layouts.app')
 @section('title', 'Nouvelle ordonnance')
 
